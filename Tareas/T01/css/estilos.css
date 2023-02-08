@@ -1,0 +1,38 @@
+h1{
+    font-family: fantasy;
+    font-size: 70px;
+}
+.p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+.product {
+    text-align: center;
+  }
+  
+  .product img {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .product-price {
+    font-size: 18px;
+    color: green;
+    margin-bottom: 20px;
+  }
+  
+  .product-description {
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
