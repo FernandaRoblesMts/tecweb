@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de productos</title>
+  </head>
+  <body>
+    <h1>Formulario de productos</h1>
+    <form action="set_producto_v2.php" method="POST" onsubmit="return validarFormulario()">
+      <label for="nombre_producto">Nombre del producto:</label>
+      <input type="text" name="nombre_producto" id="nombre_producto" required maxlength="100"><br>
+      <br>
+
+      <label for="marca_producto">Marca del producto:</label>
+      <select name="marca_producto" id="marca_producto" required>
+        <option value="">Seleccionar</option>
+        <option value="Gamesa">Gamesa</option>
+        <option value="Marinela">Marinela</option>
+        <option value="Bimbo">Bimbo</option>
+        <option value="Saritas">Sabritas</option>
+        <option value="Barcel">Barcel</option>
+      </select><br>
+      <br>
+    
+      <label for="modelo_producto">Modelo del producto:</label>
+      <input type="text" name="modelo_producto" id="modelo_producto" required pattern="[a-zA-Z0-9]{1,25}"><br>
+      <br>
+    
+      <label for="precio_producto">Precio del producto:</label>
+      <input type="number" name="precio_producto" id="precio_producto" required min="99"><br>
+      <br>
+    
+      <label for="descripcion_producto">Detalles del producto:</label>
+      <textarea name="descripcion_producto" id="descripcion_producto" maxlength="250"></textarea><br>
+      <br>
+    
+      <label for="cantidad_producto">Cantidad del producto:</label>
+      <input type="number" name="cantidad_producto" id="cantidad_producto" required min="0"><br>
+      <br>
+    
+      <label for="imagen_producto">Imagen del producto:</label>
+      <input type="text" name="imagen_producto" id="imagen_producto"><br>
+      <br>
+    
+      <input type="hidden" name="eliminado" value="0">
+    
+      <input type="submit" value="Enviar">
+    </form>
+    
+    <div id="errores"></div>
+    
+    <script>
+      function validarFormulario() {
+        var nombre = document.getElementById("nombre_producto").value.trim();
+        var marca = document.getElementById("marca_producto").value.trim();
+        var modelo = document.getElementById("modelo_producto").value.trim();
+        var precio = document.getElementById("precio_producto").value.trim();
+        var descripcion = document.getElementById("descripcion_producto").value.trim();        
+        var cantidad = document.getElementById("cantidad_producto").value.trim();
+        var imagen = document.getElementById("imagen_producto").value.trim();
+    
+        var errores = "";
+    
+        if (nombre === "") {
+          errores += "El nombre del producto es obligatorio.<br>";
+        }
+    
+        if (marca === "") {
+          errores += "La marca del producto es obligatoria.<br>";
+        }
+    
+        if (modelo === "") {
+          errores += "El modelo del producto es obligatorio.<br>";
+        }
+    
+        if (precio === "") {
+          errores += "El precio del producto es obligatorio.<br>";
+        } else if (isNaN(precio)) {
+          errores += "El precio del producto debe ser un número.<br>";
+        }
+    
+        if (descripcion.length > 250) {
+          errores += "La descripción del producto debe tener 250 caracteres o menos.<br>";
+        }
+    
+        if (cantidad === "") {
+          errores += "La cantidad del producto es obligatoria.<br>";
+        } else if (isNaN(cantidad)) {
+          errores += "La cantidad del producto debe ser un número.<br>";
+        }
+    
+        document.getElementById("errores").innerHTML = errores;
+    
+        return errores === "";
+      }
+    </script>
+</body>
+</html>  
